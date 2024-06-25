@@ -4,48 +4,46 @@ option go_package = "genproto/user_service";
 
 package user_service;
 
-service TeacherService {
-    rpc Create(CreateTeacher) returns (TeacherPrimaryKey) {}
-    rpc GetByID(TeacherPrimaryKey) returns (Teacher) {}
-    rpc GetList(GetListTeacherRequest) returns (GetListTeacherResponse) {}
-    rpc Update(UpdateTeacherRequest) returns (Message) {}
-    rpc Delete(TeacherPrimaryKey) returns (Message) {}
-    rpc GetByGmail(TeacherGmail) returns (TeacherPrimaryKey) {}
+service SupportTeacherService {
+    rpc Create(CreateSupportTeacher) returns (SupportTeacherPrimaryKey) {}
+    rpc GetByID(SupportTeacherPrimaryKey) returns (SupportTeacher) {}
+    rpc GetList(GetListSupportTeacherRequest) returns (GetListSupportTeacherResponse) {}
+    rpc Update(UpdateSupportTeacherRequest) returns (STMessage) {}
+    rpc Delete(SupportTeacherPrimaryKey) returns (STMessage) {}
+    rpc GetByGmail(SupportTeacherGmail) returns (SupportTeacherPrimaryKey) {}
 }
 
-message TeacherPrimaryKey {
+message SupportTeacherPrimaryKey {
     string id = 1;
 }
     
-message TeacherGmail {
+message SupportTeacherGmail {
     string gmail = 1;
 }
 
 
-message Message {
+message STMessage {
     string message =1;
 }
 
-message CreateTeacher {
+message CreateSupportTeacher {
     string fullname = 1;
     string phone = 2;
     string password = 3;
     int32 salary = 4;
     int32 ieltsscore = 5;
     int32 ieltsattemptscount = 6;
-    string supportteacherid = 7;
     string branchid = 8;
     string email=9;
 }
 
-message Teacher {
+message SupportTeacher {
     string fullname = 1;
     string phone = 2;
     string password = 3;
     int32 salary = 4;
     int32 ieltsscore = 5;
     int32 ieltsattemptscount = 6;
-    string supportteacherid = 7;
     string branchid = 8;
     string email=9;
     string id = 10;
@@ -54,26 +52,25 @@ message Teacher {
     string deleted_at = 13;
 }
 
-message UpdateTeacherRequest {
+message UpdateSupportTeacherRequest {
     string fullname = 1;
     string phone = 2;
     string password = 3;
     int32 salary = 4;
     int32 ieltsscore = 5;
     int32 ieltsattemptscount = 6;
-    string supportteacherid = 7;
-    string branchid = 8;
-    string email=9;
-    string id=10;
+    string branchid = 7;
+    string email=8;
+    string id=9;
 }
 
-message GetListTeacherRequest {
+message GetListSupportTeacherRequest {
     int64 offset = 1;
     int64 limit = 2;
     string search = 3;
 }
 
-message GetListTeacherResponse {
+message GetListSupportTeacherResponse {
     int64 count = 1;
-    repeated Teacher teacher = 2;
+    repeated SupportTeacher supportteacher = 2;
 }

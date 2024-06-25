@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+option go_package = "genproto/user_service";
+
+package user_service;
+
+service AdminService {
+    rpc Create(CreateAdmin) returns (AdminPrimaryKey) {}
+    rpc GetByID(AdminPrimaryKey) returns (Admin) {}
+    rpc GetList(GetListAdminRequest) returns (GetListAdminResponse) {}
+    rpc Update(UpdateAdminRequest) returns (ADMessage) {}
+    rpc Delete(AdminPrimaryKey) returns (ADMessage) {}
+    rpc GetByGmail(AdminGmail) returns (AdminPrimaryKey) {}
+}
+
+message AdminPrimaryKey {
+    string id = 1;
+}
+    
+message AdminGmail {
+    string gmail = 1;
+}
+
+
+message ADMessage {
+    string message =1;
+}
+
+message CreateAdmin {
+    string fullname = 1;
+    string phone = 2;
+    string password = 3;
+    int32 salary = 4;
+    int32 ieltsscore = 5;
+    string branchid = 6;
+    string email=7;
+}
+
+message Admin {
+    string fullname = 1;
+    string phone = 2;
+    string password = 3;
+    int32 salary = 4;
+    int32 ieltsscore = 5;
+    string branchid = 6;
+    string email=7;
+    string id = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    string deleted_at = 11;
+}
+
+message UpdateAdminRequest {
+    string fullname = 1;
+    string phone = 2;
+    string password = 3;
+    int32 salary = 4;
+    int32 ieltsscore = 5;
+    string branchid = 6;
+    string email=7;
+    string id=8;
+}
+
+message GetListAdminRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListAdminResponse {
+    int64 count = 1;
+    repeated Admin admin = 2;
+}
