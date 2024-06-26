@@ -32,9 +32,7 @@ message CreateStudent {
     string password = 3;
     string branchid = 4;
     string email=5;
-    int32 paidSum=6;
-    int32 courseCount=7;
-    int32 totalSum=8;
+    string groupId=6;
 }
 
 message Student {
@@ -49,6 +47,7 @@ message Student {
     string created_at =9;
     string updated_at = 10;
     string deleted_at = 11;
+    string groupId=12;
 }
 
 message UpdateStudentRequest {
@@ -59,6 +58,8 @@ message UpdateStudentRequest {
     int32 paidSum=5;
     int32 courseCount=6;
     int32 totalSum=7;
+    string groupId=8;
+    string id=9;
 }
 
 message GetListStudentRequest {
