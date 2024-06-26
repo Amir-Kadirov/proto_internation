@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+option go_package = "genproto/schedule_service";
+
+package schedule_service;
+
+service StudentService {
+    rpc Create(CreateStudent) returns (StudentPrimaryKey) {}
+    rpc GetByID(StudentPrimaryKey) returns (Student) {}
+    rpc GetList(GetListStudentRequest) returns (GetListStudentResponse) {}
+    rpc Update(UpdateStudentRequest) returns (STMessage) {}
+    rpc Delete(StudentPrimaryKey) returns (STMessage) {}
+    rpc GetByGmail(StudentGmail) returns (StudentPrimaryKey) {}
+}
+
+message StudentPrimaryKey {
+    string id = 1;
+}
+    
+message StudentGmail {
+    string gmail = 1;
+}
+
+
+message STMessage {
+    string message =1;
+}
+
+message CreateStudent {
+    string fullname = 1;
+    string phone = 2;
+    string password = 3;
+    string branchid = 4;
+    string email=5;
+    int32 paidSum=6;
+    int32 courseCount=7;
+    int32 totalSum=8;
+}
+
+message Student {
+    string fullname = 1;
+    string phone = 2;
+    string branchid = 3;
+    string email=4;
+    int32 paidSum=5;
+    int32 courseCount=6;
+    int32 totalSum=7;
+    string id = 8;
+    string created_at =9;
+    string updated_at = 10;
+    string deleted_at = 11;
+}
+
+message UpdateStudentRequest {
+    string fullname = 1;
+    string phone = 2;
+    string branchid = 3;
+    string email=4;
+    int32 paidSum=5;
+    int32 courseCount=6;
+    int32 totalSum=7;
+}
+
+message GetListStudentRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListStudentResponse {
+    int64 count = 1;
+    repeated Student student = 2;
+}
