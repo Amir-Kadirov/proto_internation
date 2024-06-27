@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option go_package = "genproto/schedule_service";
+
+package schedule_service;
+
+service GroupManyService {
+    rpc Create(CreateGroupMany) returns (GMMessage) {}
+    rpc ScheduleM (Empty) returns (ScheduleMonth) {}
+}
+
+message Empty {}
+
+message GMMessage {
+    string message =1;
+}
+
+message CreateGroupMany {
+   string groupId=1;
+   string scheduleId=2;
+   string journalId=3;
+}
+
+message GroupMany {
+    string groupId=1;
+    string scheduleId=2;
+    string journalId=3;
+    string created_at =4;
+    string updated_at = 5;
+    string deleted_at = 6;
+}
+
+message UpdateGroupManyRequest {
+    string groupId=1;
+    string scheduleId=2;
+    string journalId=3;
+}
+
+
+message SchMonth {
+    string GroupID=1;
+    string GroupType=2;
+    string StartTime=3;
+    string EndTime=4;
+    string BranchName=5;
+    string TeacherName=6;
+    string SupportTeacherName=7;
+    int32  StudentCount=8;
+}
+
+message ScheduleMonth{
+    int32 count=1;
+    repeated SchMonth schMonth=2;
+}

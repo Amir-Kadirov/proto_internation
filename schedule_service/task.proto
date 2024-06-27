@@ -39,9 +39,8 @@ message Task {
 }
 
 message DoTaskReq{
-    string label=1;
-    string lessonId=2;
-    string id=3;
+    string doTask=1;
+    string id=2;
 }
 
 message UpdateTask {
