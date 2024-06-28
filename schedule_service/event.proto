@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = "genproto/schedule_service";
+
+package schedule_service;
+
+service EventService {
+    rpc Create(CreateEvent) returns (EventPrimaryKey) {}
+    rpc GetByID(EventPrimaryKey) returns (Event) {}
+    rpc GetList(GetListEventRequest) returns (GetListEventResponse) {}
+    rpc Update(UpdateEventRequest) returns (EVMessage) {}
+    rpc Delete(EventPrimaryKey) returns (EVMessage) {}
+    rpc RegisterEvent(RegisterEv) returns (EVMessage) {}
+}
+
+message EventPrimaryKey {
+    string id = 1;
+}
+
+message RegisterEv{
+    string studentId=1;
+    string eventId=2;
+}
+
+message EVMessage {
+    string message =1;
+}
+
+message CreateEvent {
+   string topic=1;
+   string starttime=2;
+   string day=3;
+   string branchId=4;
+}
+
+message Event {
+    string topic=1;
+    string starttime=2;
+    string day=3;
+    string branchId=4;
+    string id=5;
+    string created_at =6;
+    string updated_at = 7;
+    string deleted_at = 8;
+}
+
+message UpdateEventRequest {
+    string topic=1;
+    string starttime=2;
+    string day=3;
+    string branchId=4;
+    string id=5;
+}
+
+message GetListEventRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListEventResponse {
+    int64 count = 1;
+    repeated Event Event = 2;
+}

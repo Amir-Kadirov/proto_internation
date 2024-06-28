@@ -6,7 +6,7 @@ package schedule_service;
 
 service GroupManyService {
     rpc Create(CreateGroupMany) returns (GMMessage) {}
-    rpc ScheduleM (Empty) returns (ScheduleMonth) {}
+    rpc ScheduleM(Empty) returns (ScheduleMonth) {}
 }
 
 message Empty {}
@@ -50,5 +50,5 @@ message SchMonth {
 
 message ScheduleMonth{
     int32 count=1;
-    repeated SchMonth schMonth=2;
+    repeated SchMonth sMonth=2;
 }
