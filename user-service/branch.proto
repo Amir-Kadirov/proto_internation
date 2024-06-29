@@ -4,6 +4,9 @@ option go_package = "genproto/user_service";
 
 package user_service;
 
+// import "teacher.proto";
+// import "supportteacher.proto";
+
 service BranchService {
     rpc Create(CreateBranch) returns (BranchPrimaryKey) {}
     rpc GetByID(BranchPrimaryKey) returns (Branch) {}
@@ -54,3 +57,10 @@ message GetListBranchResponse {
     int64 count = 1; // Note: Changed to lowercase "count"
     repeated Branch branches = 2; // Note: Changed to "branches"
 }
+
+
+// message BranchReportReq{
+//     string BranchId=1;
+//     repeated user_service.Teacher teacher=2;
+//     repeated user_service.SupportTeacher supportTeacher=3;
+// }
