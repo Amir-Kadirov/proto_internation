@@ -81,14 +81,14 @@ message GetListTeacherResponse {
 
 
 message TeacherRep {
-    string fullname = 1;
-    string phone = 2;
-    int32 salary = 3;
-    int32 ieltsscore = 4;
-    string branchId = 5;
-    string id = 6;
-    int32 monhtWorked=7;
-    int32 totalSum=8;
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    int32 salary = 4;
+    int32 ieltsscore = 5;
+    string branchId = 6;
+    int32 monhtWorked = 7;
+    int32 totalSum = 8;
     string created_at = 9;
     string updated_at = 10;
     string deleted_at = 11;
