@@ -10,13 +10,18 @@ service ManagerService {
     rpc GetList(GetListManagerRequest) returns (GetListManagerResponse) {}
     rpc Update(UpdateManagerRequest) returns (MGMessage) {}
     rpc Delete(ManagerPrimaryKey) returns (MGMessage) {}
-    rpc GetByGmail(ManagerGmail) returns (ManagerPrimaryKey) {}
+    rpc GetByGmail(ManagerGmail) returns (ManagerGmailRes) {}
 }
 
 message ManagerPrimaryKey {
     string id = 1;
 }
-    
+
+message ManagerGmailRes{
+    string gmail =1;
+    string password=2;
+}
+
 message ManagerGmail {
     string gmail = 1;
 }

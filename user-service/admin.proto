@@ -10,12 +10,17 @@ service AdminService {
     rpc GetList(GetListAdminRequest) returns (GetListAdminResponse) {}
     rpc Update(UpdateAdminRequest) returns (ADMessage) {}
     rpc Delete(AdminPrimaryKey) returns (ADMessage) {}
-    rpc GetByGmail(AdminGmail) returns (AdminPrimaryKey) {}
+    rpc GetByGmail(AdminGmail) returns (AdminGmailRes) {}
     rpc AdminReport(GetListAdminRequest) returns (GetRepAdminResponse) {}
 }
 
 message AdminPrimaryKey {
     string id = 1;
+}
+
+message AdminGmailRes{
+    string gmail =1;
+    string password=2;
 }
     
 message AdminGmail {

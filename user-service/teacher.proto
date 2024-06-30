@@ -10,18 +10,22 @@ service TeacherService {
     rpc GetList(GetListTeacherRequest) returns (GetListTeacherResponse) {}
     rpc Update(UpdateTeacherRequest) returns (Message) {}
     rpc Delete(TeacherPrimaryKey) returns (Message) {}
-    rpc GetByGmail(TeacherGmail) returns (TeacherPrimaryKey) {}
+    rpc GetByGmail(TeacherGmail) returns (TeacherGmailRes) {}
     rpc TeacherReport(GetListTeacherRequest) returns(GetRepTeacherResponse) {}
 }
 
 message TeacherPrimaryKey {
     string id = 1;
 }
+
+message TeacherGmailRes{
+    string gmail =1;
+    string password=2;
+}
     
 message TeacherGmail {
     string gmail = 1;
 }
-
 
 message Message {
     string message =1;

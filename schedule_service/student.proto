@@ -10,12 +10,17 @@ service StudentService {
     rpc GetList(GetListStudentRequest) returns (GetListStudentResponse) {}
     rpc Update(UpdateStudentRequest) returns (STMessage) {}
     rpc Delete(StudentPrimaryKey) returns (STMessage) {}
-    rpc GetByGmail(StudentGmail) returns (StudentPrimaryKey) {}
+    rpc GetByGmail(StudentGmail) returns (StudentGmailRes) {}
     rpc StudentReport(GetListStudentRequest) returns (GetRepStudent) {}
 }
 
 message StudentPrimaryKey {
     string id = 1;
+}
+
+message StudentGmailRes{
+    string gmail =1;
+    string password=2;
 }
     
 message StudentGmail {
