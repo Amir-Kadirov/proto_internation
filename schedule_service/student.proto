@@ -11,6 +11,7 @@ service StudentService {
     rpc Update(UpdateStudentRequest) returns (STMessage) {}
     rpc Delete(StudentPrimaryKey) returns (STMessage) {}
     rpc GetByGmail(StudentGmail) returns (StudentPrimaryKey) {}
+    rpc StudentReport(GetListStudentRequest) returns (GetRepStudent) {}
 }
 
 message StudentPrimaryKey {
@@ -71,4 +72,21 @@ message GetListStudentRequest {
 message GetListStudentResponse {
     int64 count = 1;
     repeated Student student = 2;
+}
+
+message StudentRep {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    int32 paidSum=4;
+    int32 courseCount=5;
+    int32 totalSum=6;
+    string created_at =7;
+    string updated_at = 8;
+    string deleted_at = 9;
+}
+
+message GetRepStudent{
+    int64 count=1;
+    repeated StudentRep student=2;
 }
