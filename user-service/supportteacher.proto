@@ -11,6 +11,7 @@ service SupportTeacherService {
     rpc Update(UpdateSupportTeacherRequest) returns (STMessage) {}
     rpc Delete(SupportTeacherPrimaryKey) returns (STMessage) {}
     rpc GetByGmail(SupportTeacherGmail) returns (SupportTeacherGmailRes) {}
+    rpc SupportTeacherReport(GetListSupportTeacherRequest) returns (GetRepSupportTeacherResponse) {}
 }
 
 message SupportTeacherPrimaryKey {
@@ -76,4 +77,24 @@ message GetListSupportTeacherRequest {
 message GetListSupportTeacherResponse {
     int64 count = 1;
     repeated SupportTeacher supportteacher = 2;
+}
+
+
+message SupportTeacherRep {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    int32 salary = 4;
+    int32 ieltsscore = 5;
+    string branchId = 6;
+    int32 monhtWorked = 7;
+    int32 totalSum = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    string deleted_at = 11;
+}
+
+message GetRepSupportTeacherResponse {
+    int64 count = 1;
+    repeated SupportTeacherRep supportTeacher = 2;
 }
