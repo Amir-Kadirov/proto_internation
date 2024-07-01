@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = "genproto/auth_service";
+
+package auth_service;
+
+
+service TeacherAuth {
+    rpc TeacherLoginByPassword(TeacherLoginRequest) returns (TeacherLoginResponse) {}
+    rpc TeacherGmailCheck(TeacherGmailCheckRequest) returns (TeacherGmailCheckResponse) {}
+    rpc TeacherLoginByGmail(TeacherGmailCheckRequest) returns (TeacherEmpty) {}
+    rpc TeacherLoginByGmailComfirm(TeacherLoginByGmailRequest) returns (TeacherLoginResponse) {}
+    rpc TeacherUpdatePassword(TeacherCreateRequest) returns (TeacherEmpty) {}
+    rpc TeacherResetPassword(TeacherGmailCheckRequest) returns (TeacherEmpty) {}
+    rpc TeacherResetPasswordConfirm(TeacherPasswordConfirm) returns (TeacherEmpty) {}
+}   
+
+message TeacherEmpty {}
+
+message TeacherCreateRequest{
+    string gmail=1;
+    string password=2;
+}
+
+message TeacherRConfirm{
+    string otp=1;
+    string gmail=2;
+    string password=3;
+    string gender=4;
+    string language=5;
+}
+
+message TeacherLoginRequest {
+    string gmail=1;
+    string password=2;
+}
+
+message TeacherLoginResponse{  
+    string accesstoken=1;
+    string refreshtoken=2;
+}
+
+message TeacherGmailCheckRequest{
+    string gmail=1;
+}
+
+message TeacherGmailCheckResponse{
+    string password=1;
+}
+
+message TeacherLoginByGmailRequest {
+    string otp=1;
+    string gmail=2;
+}
+
+message TeacherPasswordConfirm {
+    string gmail=1;
+    string password=2;
+    string otp=3;
+}
